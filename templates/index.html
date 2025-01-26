@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Search | NextGen UI</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Animated background particles -->
+    <div class="particles">
+      <canvas id="particle-canvas"></canvas>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+      <a href="/about" class="nav-link"> <i class="fas fa-user"></i> About </a>
+      <a href="/howto" class="nav-link">
+        <i class="fas fa-question-circle"></i> How To
+      </a>
+    </nav>
+
+    <div class="container">
+      <!-- Animated Logo -->
+      <img
+        src="{{ url_for('static', filename='logo.png') }}"
+        alt="Logo"
+        class="logo"
+      />
+
+      <!-- Search Form -->
+      <div class="search-container">
+        <form class="search-form" action="/" method="POST">
+          <input
+            type="text"
+            name="search"
+            class="search-input"
+            placeholder="Search the universe..."
+            autocomplete="off"
+          />
+          <button type="submit" class="search-button">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Dynamic Background Script -->
+    <script>
+      // Particle animation
+      const canvas = document.getElementById("particle-canvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      const particleCount = window.innerWidth / 5;
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 2 + 1;
+          this.speedX = Math.random() * 3 - 1.5;
+          this.speedY = Math.random() * 3 - 1.5;
+        }
+
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+
+          if (this.x > canvas.width) this.x = 0;
+          if (this.x < 0) this.x = canvas.width;
+          if (this.y > canvas.height) this.y = 0;
+          if (this.y < 0) this.y = canvas.height;
+        }
+
+        draw() {
+          ctx.fillStyle = "rgba(99, 102, 241, 0.2)";
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function init() {
+        for (let i = 0; i < particleCount; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      init();
+      animate();
+
+      // Window resize handler
+      window.addEventListener("resize", () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      });
+
+      // Search input animation
+      const searchInput = document.querySelector(".search-input");
+      searchInput.addEventListener("focus", () => {
+        searchInput.parentElement.style.transform = "scale(1.02)";
+      });
+      searchInput.addEventListener("blur", () => {
+        searchInput.parentElement.style.transform = "scale(1)";
+      });
+    </script>
+
+    <script>
+      document
+        .querySelector(".search-form")
+        .addEventListener("submit", function (e) {
+          const btn = this.querySelector("button");
+          btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
+          btn.disabled = true;
+        });
+    </script>
+  </body>
+</html>

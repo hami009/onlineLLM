@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | NextGen Search</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="particles">
+      <canvas id="particle-canvas"></canvas>
+    </div>
+
+    <nav class="navbar">
+      <a href="/about" class="nav-link active">
+        <i class="fas fa-user"></i> About
+      </a>
+      <a href="/howto" class="nav-link">
+        <i class="fas fa-question-circle"></i> How To
+      </a>
+    </nav>
+
+    <div class="container">
+      <div class="content-card">
+        <h1 class="section-title">About Our Company</h1>
+        <div class="about-content">
+          <div class="glass-card">
+            <h2><i class="fas fa-rocket"></i> Our Mission</h2>
+            <p>
+              We are a forward-thinking Information Technology company dedicated
+              to revolutionizing how you access and interact with digital
+              content. Our advanced search algorithms and AI-powered solutions
+              help you find accurate information faster than ever before.
+            </p>
+          </div>
+
+          <div class="glass-card">
+            <h2><i class="fas fa-brain"></i> Our Technology</h2>
+            <p>Leveraging cutting-edge technologies including:</p>
+            <ul class="tech-list">
+              <li>
+                <i class="fas fa-microchip"></i> Natural Language Processing
+              </li>
+              <li><i class="fas fa-cloud"></i> Cloud Computing</li>
+              <li><i class="fas fa-robot"></i> Machine Learning</li>
+              <li><i class="fas fa-bolt"></i> Real-time Indexing</li>
+            </ul>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">10M+</div>
+              <div class="stat-label">Daily Queries</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">0.2s</div>
+              <div class="stat-label">Average Response Time</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">99.9%</div>
+              <div class="stat-label">Accuracy Rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='particles.js') }}"></script>
+  </body>
+</html>

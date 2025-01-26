@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How To Use | NextGen Search</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="particles">
+      <canvas id="particle-canvas"></canvas>
+    </div>
+
+    <nav class="navbar">
+      <a href="/about" class="nav-link"> <i class="fas fa-user"></i> About </a>
+      <a href="/howto" class="nav-link active">
+        <i class="fas fa-question-circle"></i> How To
+      </a>
+    </nav>
+
+    <div class="container">
+      <div class="content-card">
+        <h1 class="section-title">How It Works</h1>
+
+        <div class="steps-container">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3><i class="fas fa-keyboard"></i> Enter Your Query</h3>
+            <p>
+              Type what you're looking for in our intuitive search box. You can
+              use natural language or specific keywords.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3><i class="fas fa-bolt"></i> Instant Processing</h3>
+            <p>
+              Our AI-powered system analyzes your query across multiple data
+              sources in real-time.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3><i class="fas fa-chart-line"></i> Smart Results</h3>
+            <p>
+              Receive organized, relevant results with priority rankings and
+              contextual information.
+            </p>
+          </div>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Privacy First</h4>
+            <p>We never store or share your search queries</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-clock"></i>
+            <h4>24/7 Availability</h4>
+            <p>Access our search engine anytime, anywhere</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-language"></i>
+            <h4>Multi-language</h4>
+            <p>Supports 50+ languages and dialects</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='particles.js') }}"></script>
+  </body>
+</html>

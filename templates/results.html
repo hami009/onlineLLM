@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results - DeepSearch</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="/about" class="nav-link">
+        <i class="fas fa-info-circle"></i> About
+      </a>
+      <a href="/howto" class="nav-link">
+        <i class="fas fa-question"></i> How To
+      </a>
+    </nav>
+
+    <main class="results-container">
+      <!-- Search Bar -->
+      <div class="search-header">
+        <form class="search-form" action="/search" method="GET">
+          <input
+            type="text"
+            name="query"
+            class="search-input"
+            placeholder="Search again..."
+            value="{{ query }}"
+          />
+          <button type="submit" class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Analysis Card -->
+      <div class="analysis-card">
+        <div class="analysis-content">{{ analysis|safe }}</div>
+      </div>
+
+      <!-- References Card -->
+      <div class="references-card">
+        <div class="references-list">
+          {% for source in sources %}
+          <div class="reference-item">
+            <span class="reference-badge">[{{ loop.index }}]</span>
+            <a href="{{ source.url }}" target="_blank" class="reference-link">
+              {{ source.url }}
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='particles.js') }}"></script>
+    <script>
+      // Loading spinner script
+      document
+        .querySelector(".search-form")
+        .addEventListener("submit", function (e) {
+          const btn = this.querySelector("button");
+          btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+          btn.disabled = true;
+        });
+    </script>
+  </body>
+</html>

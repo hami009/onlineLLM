@@ -1,0 +1,31 @@
+<!-- templates/error.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Error Occurred</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="particles">
+      <canvas id="particle-canvas"></canvas>
+    </div>
+
+    <div class="container">
+      <div class="error-box">
+        <h2>⚠️ Error Processing Request</h2>
+        <div class="error-details">
+          <p>{{ error }}</p>
+          <p class="error-hint">
+            Please check your search terms and try again later
+          </p>
+        </div>
+        <a href="/" class="home-link">
+          <i class="fas fa-arrow-left"></i> Return to Home
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
